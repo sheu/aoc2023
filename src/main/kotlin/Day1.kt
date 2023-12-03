@@ -11,6 +11,13 @@ fun main() {
     val sum = numbers.sumOf { it.toInt() }
     println(sum)
 
+    println(
+        "nineeightone".replace("nine", "n9ne")
+            .replace("eight", "e8ght")
+            .replace("one", "o1e").first { c -> c.isDigit() }
+
+    )
+
 
 }
 
@@ -29,12 +36,14 @@ fun String.extractDigit(): String {
                 .map { mr -> mr.range.first }.toList()
         }
             .toFlatMap()
+    //println(wordToIndex)
 
     val chars =
         (mapIndexed { i, it -> i to it }).filter { it.second.isDigit() }.map {
             it.second.toString().toInt() to it.first
         }
     val combined = (wordToIndex + chars).sortedBy { it.second }.map { it.first }
+    // println(combined)
     return combined.joinToString("")
 
 
