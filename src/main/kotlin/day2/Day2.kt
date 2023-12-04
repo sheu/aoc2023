@@ -17,6 +17,10 @@ fun main() {
     val part2 = gameList.sumOf { it.maxPossible() }
     println(part2)
 
+    val lines2  = readEntireFile("day2.txt").map { it.split(":") }
+    println(lines2)
+
+
 
 }
 
@@ -32,9 +36,8 @@ private fun Game.isValid(red: Int, green: Int, blue: Int): Boolean {
 
 private fun  Pair<String, List<Map<String, Int>>>.toGame() = Game(first.split(" ").last().toInt(), second)
 
-private fun  List<String>.toMap() = map {
-       val (a, b) = it.trim().split(" ")
-        b to a.toInt()
-    }
-        .toMap()
+private fun  List<String>.toMap() = associate {
+    val (a, b) = it.trim().split(" ")
+    b to a.toInt()
+}
 
